@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o card.o
-LINKOBJ  = main.o card.o
+OBJ      = main.o card.o hand.o genericPlayer.o player.o house.o deck.o game.o
+LINKOBJ  = main.o card.o hand.o genericPlayer.o player.o house.o deck.o game.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -29,3 +29,21 @@ main.o: main.cpp
 
 card.o: card.cpp
 	$(CPP) -c card.cpp -o card.o $(CXXFLAGS)
+
+hand.o: hand.cpp
+	$(CPP) -c hand.cpp -o hand.o $(CXXFLAGS)
+
+genericPlayer.o: genericPlayer.cpp
+	$(CPP) -c genericPlayer.cpp -o genericPlayer.o $(CXXFLAGS)
+
+player.o: player.cpp
+	$(CPP) -c player.cpp -o player.o $(CXXFLAGS)
+
+house.o: house.cpp
+	$(CPP) -c house.cpp -o house.o $(CXXFLAGS)
+
+deck.o: deck.cpp
+	$(CPP) -c deck.cpp -o deck.o $(CXXFLAGS)
+
+game.o: game.cpp
+	$(CPP) -c game.cpp -o game.o $(CXXFLAGS)

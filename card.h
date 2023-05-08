@@ -1,9 +1,12 @@
+#ifndef __TEST_CARD__
+#define __TEST_CARD__
 
 #include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
 #include <ctime>
+
 class Card
 {
 public:
@@ -27,3 +30,5 @@ private:
     suit m_Suit;
     bool m_IsFaceUp;
 };
+
+#endif
