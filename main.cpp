@@ -48,7 +48,7 @@ int main()
         aGame.Play();
         std::cout << "\nDo you want to play again? (Y/N): ";
         std::cin >> again;
-    } 
+    }
 
     return 0;
 }
