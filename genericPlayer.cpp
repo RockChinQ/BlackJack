@@ -16,3 +16,8 @@ void GenericPlayer::Bust() const
 {
     std::cout << m_Name << " busts.\n";
 }
+
+std::string GenericPlayer::GetName() const
+{
+    return m_Name;
+}

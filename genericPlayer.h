@@ -22,6 +22,8 @@ public:
     //announces that the generic player busts
     void Bust() const;
 
+    std::string GetName() const;
+
 protected:
     std::string m_Name;
 };

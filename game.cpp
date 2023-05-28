@@ -19,6 +19,20 @@ Game::Game(const std::vector<std::string>& names)
 Game::~Game()
 {}
 
+void Game::Bet()
+{
+	//ask player for bet
+	for(int i = 0; i < m_Players.size(); ++i){
+        std::cout<<i<<": "<<m_Players[i].GetName()<<std::endl;
+    }
+    int choice = -1;
+    do{
+        std::cout<<"Enter the number of the player you want to bet on (0-"<<m_Players.size()-1<<"): ";
+        std::cin>>choice;
+    }while(choice < 0 || choice > m_Players.size()-1);
+    m_playerBet = m_Players[choice].GetName();
+}
+
 void Game::Play()
 {         
     //deal initial 2 cards to everyone
@@ -63,6 +77,7 @@ void Game::Play()
             if ( !(pPlayer->IsBusted()) )
 			{
                 pPlayer->Win();
+                CheckBet(pPlayer->GetName(), true);
 			}
 		}
     }
@@ -77,10 +92,12 @@ void Game::Play()
                 if (pPlayer->GetTotal() > m_House.GetTotal())
                 {
                     pPlayer->Win();
+                    CheckBet(pPlayer->GetName(), true);
                 }
                 else if (pPlayer->GetTotal() < m_House.GetTotal())
                 {
                     pPlayer->Lose();
+                    CheckBet(pPlayer->GetName(), false);
                 }
                 else
                 {
@@ -88,7 +105,6 @@ void Game::Play()
                 }
             }
         }
-
     }
 
     //remove everyone's cards
@@ -97,4 +113,15 @@ void Game::Play()
         pPlayer->Clear();
 	}
     m_House.Clear();
+}
+
+void Game::CheckBet(std::string winner, bool won)
+{
+    if(winner == m_playerBet){
+        if(won){
+            std::cout<<"You won on the bet!"<<std::endl;
+        }else{
+            std::cout<<"You lost on the bet!"<<std::endl;
+        }
+    }
 }

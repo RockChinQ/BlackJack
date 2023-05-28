@@ -15,13 +15,18 @@ public:
     
     ~Game();
     
+    void Bet();
+
     //plays the game of blackjack    
     void Play();
+
+    void CheckBet(std::string winner, bool won);
 
 private:
     Deck m_Deck;
     House m_House;
     std::vector<Player> m_Players;  
+    std::string m_playerBet;
 };
 
 #endif

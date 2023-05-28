@@ -39,12 +39,13 @@ int main()
         names.push_back(name);
     }
     std::cout << std::endl;
-
+	
     //the game loop        
     Game aGame(names);
     char again = 'y';
     while (again != 'n' && again != 'N')
     {
+        aGame.Bet();
         aGame.Play();
         std::cout << "\nDo you want to play again? (Y/N): ";
         std::cin >> again;
