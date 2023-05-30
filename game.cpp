@@ -88,7 +88,12 @@ void Game::Play()
                 }
             }
         }
+    }
 
+    // 输出所有人的资金量
+    for (pPlayer = m_Players.begin(); pPlayer != m_Players.end(); ++pPlayer)
+    {
+        std::cout << pPlayer->GetName() << "'s fund: " << pPlayer->GetFund() << std::endl;
     }
 
     //remove everyone's cards

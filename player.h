@@ -5,6 +5,10 @@
 class Player : public GenericPlayer
 {
 public:
+    static int initialFund;
+    
+    int fund;
+
     Player(const std::string& name = "");
 
     virtual ~Player();
@@ -20,5 +24,9 @@ public:
 
     //announces that the player pushes
     void Push() const;
+
+    std::string GetName() const;
+
+    int GetFund() const;
 };
 #endif

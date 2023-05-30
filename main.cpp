@@ -40,6 +40,12 @@ int main()
     }
     std::cout << std::endl;
 
+    // 获取初始资金量
+    int initialFund = 0;
+    std::cout << "Enter initial fund: ";
+    std::cin >> initialFund;
+    Player::initialFund = initialFund;
+
     //the game loop        
     Game aGame(names);
     char again = 'y';
