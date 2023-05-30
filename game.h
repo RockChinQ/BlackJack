@@ -11,7 +11,7 @@
 class Game
 {
 public:
-    Game(const std::vector<std::string>& names);
+    Game(const std::vector<std::string>& names, int numCards = 2);
     
     ~Game();
 
@@ -24,6 +24,7 @@ public:
 private:
     Deck m_Deck;
     House m_House;
+    int numCards;
     std::vector<Player> m_Players;  
 
     std::vector<int> m_Bets;

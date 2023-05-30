@@ -45,8 +45,17 @@ int main()
     std::cout << "Enter initial fund: ";
     std::cin >> initialFund;
     Player::initialFund = initialFund;
-      
-    Game aGame(names);
+    
+    
+    // 询问需要多少副牌
+    int nDeck = 0;
+    while (nDeck < 1 || nDeck > 8)
+    {
+        std::cout << "How many decks? (1 - 8): ";
+        std::cin >> nDeck;
+    }
+
+    Game aGame(names, nDeck);
     //the game loop  
     char again = 'y';
 
