@@ -19,6 +19,19 @@ Game::Game(const std::vector<std::string>& names)
 Game::~Game()
 {}
 
+void Game::AskBet()
+{
+    m_Bets.clear();
+    std::vector<Player>::iterator pPlayer;
+    for (pPlayer = m_Players.begin(); pPlayer != m_Players.end(); ++pPlayer)
+    {
+        int bet = 0;
+        std::cout << pPlayer->GetName() << ", please bet: ";
+        std::cin >> bet;
+        m_Bets.push_back(bet);
+    }
+}
+
 void Game::Play()
 {         
     //deal initial 2 cards to everyone
@@ -57,17 +70,23 @@ void Game::Play()
 
     if (m_House.IsBusted())
     {
+        int betIndex = 0;
         //everyone still playing wins
         for (pPlayer = m_Players.begin(); pPlayer != m_Players.end(); ++pPlayer) 
 		{
             if ( !(pPlayer->IsBusted()) )
 			{
                 pPlayer->Win();
-			}
+                pPlayer->SetFund(pPlayer->GetFund() + m_Bets[betIndex]);
+			}else{
+                pPlayer->SetFund(pPlayer->GetFund() - m_Bets[betIndex]);
+            }
+            betIndex++;
 		}
     }
     else
     {
+        int betIndex = 0;
          //compare each player still playing to house
         for (pPlayer = m_Players.begin(); pPlayer != m_Players.end();
              ++pPlayer)      
@@ -77,18 +96,28 @@ void Game::Play()
                 if (pPlayer->GetTotal() > m_House.GetTotal())
                 {
                     pPlayer->Win();
+                    pPlayer->SetFund(pPlayer->GetFund() + m_Bets[betIndex]);
                 }
                 else if (pPlayer->GetTotal() < m_House.GetTotal())
                 {
                     pPlayer->Lose();
+                    pPlayer->SetFund(pPlayer->GetFund() - m_Bets[betIndex]);
                 }
                 else
                 {
                     pPlayer->Push();
                 }
+            }else{
+                pPlayer->SetFund(pPlayer->GetFund() - m_Bets[betIndex]);
             }
+            betIndex++;
         }
+    }
 
+    // 输出所有人的资金量
+    for (pPlayer = m_Players.begin(); pPlayer != m_Players.end(); ++pPlayer)
+    {
+        std::cout << pPlayer->GetName() << "'s fund: " << pPlayer->GetFund() << std::endl;
     }
 
     //remove everyone's cards

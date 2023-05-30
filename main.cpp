@@ -40,11 +40,22 @@ int main()
     }
     std::cout << std::endl;
 
-    //the game loop        
+    // 获取初始资金量
+    int initialFund = 0;
+    std::cout << "Enter initial fund: ";
+    std::cin >> initialFund;
+    Player::initialFund = initialFund;
+      
     Game aGame(names);
+    //the game loop  
     char again = 'y';
+
+    int round = 0;
     while (again != 'n' && again != 'N')
     {
+        std::cout << "\n-------Round" << ++round << "-------" << std::endl;
+        // 下注
+        aGame.AskBet();
         aGame.Play();
         std::cout << "\nDo you want to play again? (Y/N): ";
         std::cin >> again;
