@@ -12,7 +12,7 @@ public:
     virtual ~Deck();
 
     //create a standard deck of 52 cards
-    void Populate();
+    void Populate(int nDeck);
 
     //shuffle cards
     void Shuffle();

@@ -3,22 +3,24 @@
 Deck::Deck()
 { 
     m_Cards.reserve(52);
-    Populate();
+    Populate(1);
 }
 
 Deck::~Deck()
 {}
 
-void Deck::Populate()
+void Deck::Populate(int nDeck)
 {
     Clear();
     //create standard deck
-    for (int s = Card::CLUBS; s <= Card::SPADES; ++s)
-    {
-        for (int r = Card::ACE; r <= Card::KING; ++r)
+    for (int n=0; n<nDeck; n++){
+        for (int s = Card::CLUBS; s <= Card::SPADES; ++s)
         {
-            Add(new Card(static_cast<Card::rank>(r),
-                         static_cast<Card::suit>(s)));
+            for (int r = Card::ACE; r <= Card::KING; ++r)
+            {
+                Add(new Card(static_cast<Card::rank>(r),
+                            static_cast<Card::suit>(s)));
+            }
         }
     }
 }

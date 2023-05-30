@@ -1,8 +1,9 @@
 #include "game.h"
 #include "player.h"
 
-Game::Game(const std::vector<std::string>& names)
+Game::Game(const std::vector<std::string>& names, int _numCards)
 {
+    numCards = _numCards;
     //create a vector of players from a vector of names       
     std::vector<std::string>::const_iterator pName;
     for (pName = names.begin(); pName != names.end(); ++pName)
@@ -12,7 +13,7 @@ Game::Game(const std::vector<std::string>& names)
 
 	//seed the random number generator
 	srand(static_cast<unsigned int>(time(0)));    
-    m_Deck.Populate();
+    m_Deck.Populate(numCards);
     m_Deck.Shuffle();
 }
 
