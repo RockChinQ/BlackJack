@@ -26,9 +26,16 @@ void Game::AskBet()
     for (pPlayer = m_Players.begin(); pPlayer != m_Players.end(); ++pPlayer)
     {
         int bet = 0;
-        std::cout << pPlayer->GetName() << ", please bet: ";
-        std::cin >> bet;
-        m_Bets.push_back(bet);
+        if(pPlayer->GetFund() <= 0){
+            std::cout << pPlayer->GetName() << ", you've already bankruptced, skip bet this round." << std::endl;
+            m_Bets.push_back(bet);
+        }else{
+            while(bet <= 0 || bet > pPlayer->GetFund()){
+                std::cout << pPlayer->GetName() << ", please bet (1 - " << pPlayer->GetFund() << "): ";
+                std::cin >> bet;
+            }
+            m_Bets.push_back(bet);
+        }
     }
 }
 
