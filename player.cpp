@@ -42,4 +42,9 @@ int Player::GetFund() const
     return fund;
 }
 
+void Player::SetFund(int newFund)
+{
+    fund = newFund;
+}
+
 int Player::initialFund = 1000;

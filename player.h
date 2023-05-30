@@ -28,5 +28,7 @@ public:
     std::string GetName() const;
 
     int GetFund() const;
+
+    void SetFund(int newFund);
 };
 #endif
